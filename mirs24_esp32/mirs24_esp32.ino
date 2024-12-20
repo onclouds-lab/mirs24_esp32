@@ -27,6 +27,12 @@ mirs_msgs__srv__ParameterUpdate_Request update_req;
 mirs_msgs__srv__SimpleCommand_Response reset_res;
 mirs_msgs__srv__SimpleCommand_Request reset_req;
 
+//test
+mirs_msgs__srv__SimpleCommand_Response first_res;
+mirs_msgs__srv__SimpleCommand_Request first_req;
+mirs_msgs__srv__SimpleCommand_Response second_res;
+mirs_msgs__srv__SimpleCommand_Request second_req;
+
 //publisher,subscriber,serviceの宣言
 rcl_publisher_t enc_pub;
 rcl_publisher_t vlt_pub;
@@ -35,6 +41,10 @@ rcl_subscription_t cmd_vel_sub;
 rcl_subscription_t param_sub;
 rcl_service_t update_srv;
 rcl_service_t reset_srv;
+
+//test
+rcl_service_t first_srv;
+rcl_service_t second_srv;
 
 //ノードに関わる宣言
 rclc_executor_t executor;
@@ -70,6 +80,10 @@ float prev_l_err = 0;
 //電圧
 double vlt_1 = 0;
 double vlt_2 = 0;
+
+//test
+double test1 = 0;
+double test2 = 0;
 
 void setup() {
   ros_setup();

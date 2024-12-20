@@ -34,4 +34,21 @@ void reset_service_callback(const void * req, void * res){
 
   res_in->success = true;
 }
+//first
+void first_service_callback(const void * req, void * res){
+  mirs_msgs__srv__SimpleCommand_Request * req_in = (mirs_msgs__srv__SimpleCommand_Request *) req;
+  mirs_msgs__srv__SimpleCommand_Response * res_in = (mirs_msgs__srv__SimpleCommand_Response *) res;
 
+  test1 = 114.514;
+
+  res_in->success = true;
+}
+//second
+void second_service_callback(const void * req, void * res){
+  mirs_msgs__srv__SimpleCommand_Request * req_in = (mirs_msgs__srv__SimpleCommand_Request *) req;
+  mirs_msgs__srv__SimpleCommand_Response * res_in = (mirs_msgs__srv__SimpleCommand_Response *) res;
+
+  test1 = 810.1919;
+
+  res_in->success = true;
+}

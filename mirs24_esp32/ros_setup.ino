@@ -59,6 +59,27 @@ void ros_setup(){
     "/reset_encoder"
   );
 
+  rclc_service_init_default(
+    &first_srv,
+    &node,
+    ROSIDL_GET_SRV_TYPE_SUPPORT(mirs_msgs, srv, SimpleCommand),
+    "/first_test_service"
+  );
+
+  rclc_service_init_default(
+    &second_srv,
+    &node,
+    ROSIDL_GET_SRV_TYPE_SUPPORT(mirs_msgs, srv, SimpleCommand),
+    "/second_test_service"
+  );
+
+  rclc_publisher_init_default(
+    &battery_pub,
+    &node,
+    ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, BatteryState),
+    "/battery"
+  );
+
   const uint32_t timer_timeout = 100;
 
   rclc_timer_init_default(
@@ -70,11 +91,13 @@ void ros_setup(){
 
   //イベント発生の設定（数字はイベントの発生点の数）
   //デフォルトの発生点はsubscriberが2(/cmd_vel,/params)、serviceが2(/reset,/update)、timerが1（定期実行）の合計5
-  rclc_executor_init(&executor, &support.context, 5, &allocator);
+  rclc_executor_init(&executor, &support.context, 7, &allocator);
   rclc_executor_add_subscription(&executor, &cmd_vel_sub, &cmd_vel_msg, &cmd_vel_Callback, ON_NEW_DATA);
   rclc_executor_add_subscription(&executor, &param_sub, &param_msg, &param_Callback, ON_NEW_DATA);
   rclc_executor_add_service(&executor, &update_srv, &update_req, &update_res, update_service_callback);
   rclc_executor_add_service(&executor, &reset_srv, &reset_req, &reset_res, reset_service_callback);
+  rclc_executor_add_service(&executor, &first_srv, &first_req, &first_res, first_service_callback);
+  rclc_executor_add_service(&executor, &second_srv, &second_req, &second_res, second_service_callback);
   rclc_executor_add_timer(&executor, &timer);
 }
 
