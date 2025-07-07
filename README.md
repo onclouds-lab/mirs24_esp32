@@ -16,15 +16,23 @@ micro-rosを用いて他コンピュータと通信を行います
 *mainへの直接pushは禁じています。mainに変更を加えたい場合は開発用ブランチを立てて、pull requestを出してください*\
 *カスタマイズするなら個人または団体のアカウントでforkしてください*
 
-aaaaaaaaaaaaaaaaaa
-
 ## 使用方法
+
+### 1. Arduino IDEでESP32を開発するための環境構築
+以下参照
+https://qiita.com/asagi_toyo/items/f5d07a6ed4d6667617f7
+
+※ボードマネージャーのバージョンは2.0.17で最新でないので注意
+（ver3.0.0からピンのPWM関係に変更があったようで対応できていない．対応を誰かお願いします）
+
+### 2. micro-ROS関係の環境構築
 このリポジトリと使用するライブラリのダウンロード
 ```bash
 git clone https://github.com/mirs240x/mirs24_esp32.git
 git clone https://github.com/mirs240x/micro_ros_arduino_mirs240x.git
 ```
-ダウンロードしたライブラリはarduinoIDEのlibraryに配置
+IDEツールバーの「スケッチ」→「ファイルのインクルード」→「.Zip形式のライブラリをインストール」からダウンロードしたmicro_ros_arduinoをインストール
+mirs24_esp32は好きな場所にどうぞ
 
 ## 詳細
 ### 内部ファイルの詳細
