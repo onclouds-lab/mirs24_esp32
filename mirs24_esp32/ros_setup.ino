@@ -31,6 +31,13 @@ void ros_setup(){
     "/vel"
   );
 
+  rclc_publisher_init_default(
+    &imu_pub,
+    &node,
+    ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray),
+    "/imu"
+  );
+
   rclc_subscription_init_default(
     &cmd_vel_sub,
     &node,

@@ -24,6 +24,7 @@ std_msgs__msg__Float64MultiArray vlt_msg;       //電圧情報
 std_msgs__msg__Float64MultiArray curr_vel_msg;  //速度情報
 geometry_msgs__msg__Twist cmd_vel_msg;          //速度指令値
 mirs_msgs__msg__BasicParam param_msg;           //パラメーターメッセージ
+std_msgs__msg__Float64MultiArray imu_msg;
 
 //service通信で使用するメッセージ宣言
 mirs_msgs__srv__ParameterUpdate_Response update_res;
@@ -35,6 +36,7 @@ mirs_msgs__srv__SimpleCommand_Request reset_req;
 rcl_publisher_t enc_pub;
 rcl_publisher_t vlt_pub;
 rcl_publisher_t curr_vel_pub;
+rcl_publisher_t imu_pub;
 rcl_subscription_t cmd_vel_sub;
 rcl_subscription_t param_sub;
 rcl_service_t update_srv;
