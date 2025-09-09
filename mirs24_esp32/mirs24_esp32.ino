@@ -13,6 +13,10 @@
 #include <mirs_msgs/action/trigger.h>
 #include <pthread.h>
 #include "config.h"
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
 
 //topic通信で使用するメッセージ宣言
 std_msgs__msg__Int32MultiArray enc_msg;         //エンコーダー情報
@@ -71,12 +75,22 @@ float prev_l_err = 0;
 double vlt_1 = 0;
 double vlt_2 = 0;
 
+// BNO055のI2Cアドレスを指定（通常は0x28または0x29）
+// モジュール裏面のジャンパー等で変更可能
+Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28);
+
+//9軸
+imu::Vector<3> accel;
+imu::Vector<3> gyro;
+imu::Vector<3> mag;
+
 void setup() {
   ros_setup();
 
   encoder_open();
   vel_ctrl_set();
   vlt_setup();
+  imu_setup();
   
   delay(500);
 }

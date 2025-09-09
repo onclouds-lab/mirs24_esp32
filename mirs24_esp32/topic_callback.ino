@@ -13,8 +13,8 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 
     curr_vel_msg.data.data[0] = l_vel;
     curr_vel_msg.data.data[1] = r_vel;
-    vlt_msg.data.data[0] = l_vel;
-    vlt_msg.data.data[1] = r_vel;
+    vlt_msg.data.data[0] = accel.x();
+    vlt_msg.data.data[1] = gyro.x();
     rcl_publish(&enc_pub, &enc_msg, NULL);
     rcl_publish(&vlt_pub, &vlt_msg, NULL);
     rcl_publish(&curr_vel_pub, &curr_vel_msg, NULL);
