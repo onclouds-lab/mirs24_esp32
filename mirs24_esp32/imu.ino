@@ -40,4 +40,15 @@ void input_imu_value(){
   imu_msg.orientation_covariance[0] = -1;
   imu_msg.angular_velocity_covariance[0] = -1;
   imu_msg.linear_acceleration_covariance[0] = -1;
+
+  rosidl_runtime_c__String__assign(&mag_msg.header.frame_id, "imu_link");
+  // 3. 単位をuTからTに変換してメッセージに代入
+  mag_msg.magnetic_field.x = mag.x() / 1000000.0;
+  mag_msg.magnetic_field.y = mag.y() / 1000000.0;
+  mag_msg.magnetic_field.z = mag.z() / 1000000.0;
+
+  // 共分散は使用しないため0で初期化
+  for (int i = 0; i < 9; ++i) {
+    mag_msg.magnetic_field_covariance[i] = 0.0;
+  }
 }

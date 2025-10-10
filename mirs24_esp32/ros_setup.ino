@@ -38,6 +38,13 @@ void ros_setup(){
     "/imu"
   );
 
+  rclc_publisher_init_default(
+    &mag_pub,
+    &node,
+    ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, MagneticField),
+    "/mag"
+  );
+
   rclc_subscription_init_default(
     &cmd_vel_sub,
     &node,

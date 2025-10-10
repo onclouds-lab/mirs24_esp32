@@ -22,6 +22,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
     rcl_publish(&vlt_pub, &vlt_msg, NULL);
     rcl_publish(&curr_vel_pub, &curr_vel_msg, NULL);
     rcl_publish(&imu_pub, &imu_msg, NULL);
+    rcl_publish(&mag_pub, &mag_msg, NULL);
   }
 }
 

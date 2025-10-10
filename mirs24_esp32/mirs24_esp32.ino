@@ -19,6 +19,7 @@
 #include <utility/imumaths.h>
 #include <sensor_msgs/msg/Imu.h>
 #include <rosidl_runtime_c/string_functions.h>
+#include <sensor_msgs/msg/magnetic_field.h>
 
 
 //topic通信で使用するメッセージ宣言
@@ -28,6 +29,7 @@ std_msgs__msg__Float64MultiArray curr_vel_msg;  //速度情報
 geometry_msgs__msg__Twist cmd_vel_msg;          //速度指令値
 mirs_msgs__msg__BasicParam param_msg;           //パラメーターメッセージ
 sensor_msgs__msg__Imu imu_msg;
+sensor_msgs__msg__MagneticField mag_msg;
 
 
 
@@ -42,10 +44,12 @@ rcl_publisher_t enc_pub;
 rcl_publisher_t vlt_pub;
 rcl_publisher_t curr_vel_pub;
 rcl_publisher_t imu_pub;
+rcl_publisher_t mag_pub;
 rcl_subscription_t cmd_vel_sub;
 rcl_subscription_t param_sub;
 rcl_service_t update_srv;
 rcl_service_t reset_srv;
+
 
 //ノードに関わる宣言
 rclc_executor_t executor;
