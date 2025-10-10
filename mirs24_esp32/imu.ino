@@ -1,9 +1,5 @@
 void imu_setup(){
- if(!bno.begin())
-  {
-    // 初期化に失敗した場合、エラーメッセージを表示して停止
-    while(1);
-  }
+  bno.begin();
 
   // 外部クリスタルを使用する設定（より精度が安定します）
   bno.setExtCrystalUse(true);
