@@ -18,6 +18,7 @@
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
 
+
 //topic通信で使用するメッセージ宣言
 std_msgs__msg__Int32MultiArray enc_msg;         //エンコーダー情報
 std_msgs__msg__Float64MultiArray vlt_msg;       //電圧情報
