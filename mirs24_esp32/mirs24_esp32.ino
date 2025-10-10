@@ -17,6 +17,8 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
+#include <sensor_msgs/msg/Imu.h>
+#include <rosidl_runtime_c/string_functions.h>
 
 
 //topic通信で使用するメッセージ宣言
@@ -25,7 +27,9 @@ std_msgs__msg__Float64MultiArray vlt_msg;       //電圧情報
 std_msgs__msg__Float64MultiArray curr_vel_msg;  //速度情報
 geometry_msgs__msg__Twist cmd_vel_msg;          //速度指令値
 mirs_msgs__msg__BasicParam param_msg;           //パラメーターメッセージ
-std_msgs__msg__Float64MultiArray imu_msg;
+sensor_msgs__msg__Imu imu_msg;
+
+
 
 //service通信で使用するメッセージ宣言
 mirs_msgs__srv__ParameterUpdate_Response update_res;
@@ -86,6 +90,7 @@ Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28);
 imu::Vector<3> accel;
 imu::Vector<3> gyro;
 imu::Vector<3> mag;
+imu::Quaternion quat;
 
 void setup() {
   ros_setup();

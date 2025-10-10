@@ -12,20 +12,12 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
     vlt_watch();
     //imu取得
     get_imu_value();
+    input_imu_value();
 
     curr_vel_msg.data.data[0] = l_vel;
     curr_vel_msg.data.data[1] = r_vel;
     vlt_msg.data.data[0] = accel.x();
     vlt_msg.data.data[1] = gyro.x();
-    imu_msg.data.data[0] = accel.x();
-    imu_msg.data.data[1] = accel.y();
-    imu_msg.data.data[2] = accel.z();
-    imu_msg.data.data[3] = gyro.x();
-    imu_msg.data.data[4] = gyro.y();
-    imu_msg.data.data[5] = gyro.z();
-    imu_msg.data.data[6] = mag.x();
-    imu_msg.data.data[7] = mag.y();
-    imu_msg.data.data[8] = mag.z();
     rcl_publish(&enc_pub, &enc_msg, NULL);
     rcl_publish(&vlt_pub, &vlt_msg, NULL);
     rcl_publish(&curr_vel_pub, &curr_vel_msg, NULL);
