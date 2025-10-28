@@ -13,6 +13,11 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
     //imu取得
     get_imu_value();
     input_imu_value();
+    //WatchDog
+    if((millis() - lastCalledAt) > WATCHDOG_TIMEOUT){
+      r_vel_cmd = 0;
+      l_vel_cmd = 0;
+    }
 
     curr_vel_msg.data.data[0] = l_vel;
     curr_vel_msg.data.data[1] = r_vel;
