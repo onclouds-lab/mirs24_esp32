@@ -96,6 +96,9 @@ imu::Vector<3> gyro;
 imu::Vector<3> mag;
 imu::Quaternion quat;
 
+//WatchDog用
+uint32_t lastCalledAt;
+
 void setup() {
   ros_setup();
 
