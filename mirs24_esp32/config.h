@@ -26,6 +26,7 @@ double RKD = 8.0;
 double LKP = 100.0;
 double LKI = 30.0;
 double LKD = 8.0;
+double base_pwm = 50.0;
 
 //車体パラメータ
 #define COUNTS_PER_REV    4096.0

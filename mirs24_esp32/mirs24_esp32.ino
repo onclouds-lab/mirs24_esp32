@@ -17,9 +17,9 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
-#include <sensor_msgs/msg/Imu.h>
 #include <rosidl_runtime_c/string_functions.h>
 #include <sensor_msgs/msg/magnetic_field.h>
+#include <sensor_msgs/msg/imu.h>
 
 
 //topic通信で使用するメッセージ宣言

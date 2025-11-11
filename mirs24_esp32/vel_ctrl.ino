@@ -19,6 +19,11 @@ void calculate_vel(){
   r_vel = right_distance / 0.1;
 }
 
+void err_reset(){
+  r_err_sum = 0;
+  l_err_sum = 0;
+}
+
 void PID_control(){
   calculate_vel();
 
@@ -29,8 +34,8 @@ void PID_control(){
   l_err_sum += l_err;
 
   // PID計算を実行
-  double r_pwm = RKP * r_err + RKI * r_err_sum + RKD *  (r_err - prev_r_err);
-  double l_pwm = LKP * l_err + LKI * l_err_sum + LKD *  (l_err - prev_l_err);
+  double r_pwm = base_pwm + RKP * r_err + RKI * r_err_sum + RKD *  (r_err - prev_r_err);
+  double l_pwm = base_pwm + LKP * l_err + LKI * l_err_sum + LKD *  (l_err - prev_l_err);
 
   prev_r_err = r_err;
   prev_l_err = l_err;

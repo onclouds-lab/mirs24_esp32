@@ -30,7 +30,7 @@ void reset_service_callback(const void * req, void * res){
   mirs_msgs__srv__SimpleCommand_Request * req_in = (mirs_msgs__srv__SimpleCommand_Request *) req;
   mirs_msgs__srv__SimpleCommand_Response * res_in = (mirs_msgs__srv__SimpleCommand_Response *) res;
 
-  encoder_reset();
+  err_reset();
 
   res_in->success = true;
 }
